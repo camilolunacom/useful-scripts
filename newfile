@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "Nombre del archivo:"
+
+read filename
+
+echo "#!/bin/bash" > $filename
+chmod u+x $filename
+vim $filename
