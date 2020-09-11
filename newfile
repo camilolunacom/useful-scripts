@@ -3,17 +3,27 @@
 echo "File name:"
 read filename
 
-echo "Permissions to asign(numeric/octal):"
+echo "Permissions to assign, <RETURN> for default (764):"
 read permissions
 
-echo "Your file first line"
+echo "Your file first line, <RETURN> for default (#!/bin/bash)"
 read bang
 
 # Inserting bang on first line
-echo $bang > $filename
+if [ $bang = "" ];
+  then
+    echo $bang > $filename
+  else
+    echo "#!/bin/bash" > $filename
+fi
 
 # Assingning permissions.
-chmod $permissions $filename
+if [ $bang = "" ];
+  then
+    chmod $permissions $filename
+  else
+    chmod 764 $filename
+fi
 
 # Opening file on editor.
 vim $filename
